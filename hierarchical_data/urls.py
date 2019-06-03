@@ -16,14 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from mptt.admin import DraggableMPTTAdmin
-# from mptt.admin import MPTTModelAdmin
 from hierarchical_data.models import File
 
-from hierarchical_data.views import IndexView
+from hierarchical_data.views import IndexView,AddFileView
 
 admin.site.register(File, DraggableMPTTAdmin)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', IndexView.as_view())
+    path('', IndexView.as_view(), name='homepage'),
+    path('add', AddFileView.as_view())
 ]

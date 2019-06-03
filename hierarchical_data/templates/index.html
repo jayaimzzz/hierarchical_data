@@ -1,1 +1,15 @@
-<h1>hello</h1>
+<h1>Hierarchical Data</h1>
+{% load mptt_tags %}
+<a href='/add'>add a file</a>
+<ul>
+    {% recursetree files %}
+        <li>
+            {{ node.name }}
+            {% if not node.is_leaf_node %}
+                <ul class='fhildren'>
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>
